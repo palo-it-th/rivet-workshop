@@ -1,0 +1,6 @@
+curl --location 'http://localhost:8080/run-graph' \
+--header 'Content-Type: application/json' \
+--data '{
+    "input": "5 5 1 6",
+    "graphName": "3. Game of 24/4. JS loop"
+}'
