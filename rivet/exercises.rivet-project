@@ -220,15 +220,6 @@ data:
           outgoingConnections:
             - output->"Assemble Prompt" 7JvRXbGK_aB-l0G6Q7cP-/message4
           visualData: 537.7534199266956/1020.4160736421439/280/735//
-        '[ncRs6mldHIL68wtn16LNW]:prompt "Prompt"':
-          data:
-            enableFunctionCall: false
-            promptText: ""
-            type: user
-            useTypeInput: false
-          outgoingConnections:
-            - output->"Assemble Prompt" 7JvRXbGK_aB-l0G6Q7cP-/message2
-          visualData: 473.1460652335983/191.21738619785444/280/777//
         '[rjQxZlcpCvY4PbCZycXiG]:text "Text"':
           data:
             promptText: ""
@@ -245,7 +236,7 @@ data:
             endpoint: https://api.groq.com/openai/v1/chat/completions
             headers:
               - key: Authorization
-                value: Bearer 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
+                value: Bearer <your-api-key>
               - key: Content-Type
                 value: application/json
             maxTokens: 3000
@@ -273,15 +264,6 @@ data:
           outgoingConnections:
             - response->"Graph Output" 4zSZEw9OFMR2Kq8e1vOJJ/value
           visualData: 1425.9953180183952/530.0205969489461/230/763//
-        '[wq4Bou5gjjE0ZB3C3OazP]:prompt "Prompt"':
-          data:
-            enableFunctionCall: false
-            promptText: ""
-            type: assistant
-            useTypeInput: false
-          outgoingConnections:
-            - output->"Assemble Prompt" 7JvRXbGK_aB-l0G6Q7cP-/message3
-          visualData: 475.3991703926578/645.6468199675039/280/779//
     xKNpUOyu7nVyJdhyttJX8:
       metadata:
         description: ""
