@@ -1,0 +1,1563 @@
+version: 4
+data:
+  attachedData:
+    trivet:
+      testSuites: []
+      version: 1
+  graphs:
+    23tut-zJoV5-dQ9JX3oHh:
+      metadata:
+        description: ""
+        id: 23tut-zJoV5-dQ9JX3oHh
+        name: 3. Game of 24/2. Call JS function and compare
+      nodes:
+        '[BNBpZLP9BqpaPFrgmhe2I]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: "{{input}}"
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" GYPOd6q9FScYH34aILubR/message2
+          visualData: 569.3165727051431/764.3770168771812/280/883//
+        '[GYPOd6q9FScYH34aILubR]:assemblePrompt "Assemble Prompt"':
+          outgoingConnections:
+            - prompt->"Chat" oizUpWyyP2jI553nmWV8P/prompt
+          visualData: 996.6090742167116/669.5729428112569/280/840//
+        '[Ig0H056loxOBBRFDHhFw1]:externalCall "External Call"':
+          data:
+            functionName: calculate
+            useErrorOutput: false
+            useFunctionNameInput: false
+          outgoingConnections:
+            - result->"Compare" P9cky0z33c0suvGt5-YFf/a
+          visualData: 1815.3761467585011/1090.837312362862/180/876//
+        '[OAGYd32P1yrt5m3MRT8AT]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: >-
+              Your task is to make the number 24 using all of four numbers. You
+              can add, subtract, multiply or divide. You have to use all four
+              numbers. Each number may be used only once. For example, if I give
+              you "5, 5, 3, 4" a valid answer is "5 * 5 - (4 - 3)."
+
+
+              Output the answer in the format below:
+
+
+              ANSWER: 5 * 5 - (4 - 3)
+            type: system
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" GYPOd6q9FScYH34aILubR/message1
+          visualData: 562.8395168640341/424.2768469635544/280/791//
+        '[P9cky0z33c0suvGt5-YFf]:compare "Compare"':
+          data:
+            comparisonFunction: ==
+          outgoingConnections:
+            - output->"If/Else" sbxvW-xTvnDdc6sUKTQBU/if
+          visualData: 2169.164769160694/1172.8867075398337/190/876//
+        '[RRWEuJJByDbc_7Kn1Iu7S]:number "Number"':
+          data:
+            round: false
+            roundTo: 0
+            value: 24
+          outgoingConnections:
+            - value->"Compare" P9cky0z33c0suvGt5-YFf/b
+          visualData: 1782.0320401539605/1300.5277293634658/230/876//
+        '[ZvQ7ZWUA1CR-Lez7_HSTQ]:graphOutput "Graph Output"':
+          data:
+            dataType: boolean
+            id: output
+          visualData: 2860.9782887214283/866.0186552362113/330/890//
+        '[oizUpWyyP2jI553nmWV8P]:chat "Chat"':
+          data:
+            additionalParameters: []
+            cache: false
+            code: ""
+            enableFunctionUse: false
+            endpoint: https://api.groq.com/openai/v1/chat/completions
+            headers:
+              - key: Authorization
+                value: Bearer <your-api-key>
+              - key: Content-Type
+                value: application/json
+            maxTokens: 3000
+            model: local-model
+            overrideModel: llama-3.1-70b-versatile
+            parallelFunctionCalling: true
+            stop: ""
+            temperature: 1
+            text: ""
+            top_p: 1
+            useAdditionalParametersInput: false
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useHeadersInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          outgoingConnections:
+            - response->"Extract Regex" xRAyYLmD8WI43jKvdyolo/input
+          visualData: 1453.275869939673/582.8912695180026/230/813//
+        '[sbxvW-xTvnDdc6sUKTQBU]:ifElse "If/Else"':
+          data:
+            unconnectedControlFlowExcluded: true
+          outgoingConnections:
+            - output->"Graph Output" ZvQ7ZWUA1CR-Lez7_HSTQ/value
+          visualData: 2531.7090633861567/869.2496837913271/205/888//
+        '[xMXC5RxA3qJxnGLazmUao]:graphInput "Graph Input"':
+          data:
+            dataType: string
+            id: input
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"Prompt" BNBpZLP9BqpaPFrgmhe2I/input
+          visualData: 109.38171194741994/784.750460904178/330/883//
+        '[xQdxgG65-u4Oak75k51OV]:text "Text"':
+          data:
+            text: No solution
+          outgoingConnections:
+            - output->"If/Else" sbxvW-xTvnDdc6sUKTQBU/false
+          visualData: 2115.6418804256405/1393.802975825605/330/876//
+        '[xRAyYLmD8WI43jKvdyolo]:extractRegex "Extract Regex"':
+          data:
+            errorOnFailed: false
+            multilineMode: false
+            regex: "ANSWER: (.*)"
+            useRegexInput: false
+          outgoingConnections:
+            - output1->"External Call" Ig0H056loxOBBRFDHhFw1/arguments
+            - output1->"If/Else" sbxvW-xTvnDdc6sUKTQBU/true
+          visualData: 1449.0975581775879/899.9820068622591/239.29086798778644/852//
+    4Q0VUKwS_ZhvyQ_WxK4aS:
+      metadata:
+        description: ""
+        id: 4Q0VUKwS_ZhvyQ_WxK4aS
+        name: 1. N-shot/3. Few-shot
+      nodes:
+        '[4UY9UmDVENCZikjgmJlT9]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: Positive
+            type: assistant
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" QAkGnW5n99_mRmBGZQJDK/message2
+          visualData: -111.85387433893328/280.8876163851793/280/727//
+        '[Dces7Rsygrw9LqU7_Fmfp]:comment "Comment"':
+          data:
+            backgroundColor: rgba(0,0,0,0.05)
+            color: rgba(255,255,255,1)
+            height: 1244
+            text: "#### Example prompts"
+          visualData: -160.70644877656696/-14.283107379713785/1025.9604129633422/729//
+        '[QAkGnW5n99_mRmBGZQJDK]:assemblePrompt "Assemble Prompt"':
+          outgoingConnections:
+            - prompt->"Assemble Prompt" TeR_wpW-4_ABHJ8bNXho6/message2
+          visualData: 421.44647821174/411.16400129726975/280/744//
+        '[Re-R-S05nmd1QikZJCuAF]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: Negative
+            type: assistant
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" QAkGnW5n99_mRmBGZQJDK/message4
+          visualData: -108.80572632129062/658.122767828467/280/727//
+        '[T8PWV9ZVC1icVqAy9NJhb]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: Neutral
+            type: assistant
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" QAkGnW5n99_mRmBGZQJDK/message6
+          visualData: -111.39896848614896/1036.6674792905646/280/740//
+        '[TeR_wpW-4_ABHJ8bNXho6]:assemblePrompt "Assemble Prompt"':
+          outgoingConnections:
+            - prompt->"Chat" TmtneFgIf_Ymb2LWyTDdT/prompt
+          visualData: 982.8427699790903/681.6998380103466/280/702//
+        '[TmtneFgIf_Ymb2LWyTDdT]:chat "Chat"':
+          data:
+            additionalParameters: []
+            cache: false
+            code: ""
+            enableFunctionUse: false
+            endpoint: https://api.groq.com/openai/v1/chat/completions
+            headers:
+              - key: Authorization
+                value: Bearer <your-api-key>
+              - key: Content-Type
+                value: application/json
+            maxTokens: 3000
+            model: local-model
+            overrideModel: llama3-8b-8192
+            parallelFunctionCalling: true
+            stop: ""
+            temperature: 1
+            text: ""
+            top_p: 1
+            useAdditionalParametersInput: false
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useHeadersInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          visualData: 1381.1902105865495/517.0514011885106/230/692//
+        '[XE2LIp7JtYKh7xR2aNYAh]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: The service was fantastic and the staff were very friendly.
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" QAkGnW5n99_mRmBGZQJDK/message1
+          visualData: -112.87889169186678/107.47166740966671/280/727//
+        '[Xhr51Rptvqzn6VcRVAAxw]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: The software is user-friendly, but it lacks some advanced features.
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" TeR_wpW-4_ABHJ8bNXho6/message3
+          visualData: 980.563551738525/897.9007322453356/280/745//
+        '[nQPjuQGqeyIV0UIDxZIRx]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: The product is okay, but it took a while to arrive.
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" QAkGnW5n99_mRmBGZQJDK/message5
+          visualData: -107.97406565046244/867.1347889240712/280/739//
+        '[p49UNtKQUhhIRy5pWa1jh]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: Answer in a consistent style.
+            type: system
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" TeR_wpW-4_ABHJ8bNXho6/message1
+          visualData: 976.4863386114454/505.000996869436/280/746//
+        '[taAt6tMo7SdgzBsytkTPF]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: I had to wait for over an hour, and the food was cold when it
+              arrived.
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" QAkGnW5n99_mRmBGZQJDK/message3
+          visualData: -108.80572632129044/467.8573784078827/280/730//
+    CeKKl8oyWBa1BbwjXPyZM:
+      metadata:
+        description: ""
+        id: CeKKl8oyWBa1BbwjXPyZM
+        name: 3. Game of 24/1. Template
+      nodes:
+        '[GrXmaqb4ELFILOw6PEr_V]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: 5 5 1 6
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" _CQ3rXtekVDRp6RNF_rHl/message2
+          visualData: 561.4749672554698/751.5095105365216/280/746//
+        '[_CQ3rXtekVDRp6RNF_rHl]:assemblePrompt "Assemble Prompt"':
+          outgoingConnections:
+            - prompt->"Chat" kcxSH1zW5xp0nTFQw6wcZ/prompt
+          visualData: 996.6090742167116/680.3719694855304/280/766//
+        '[_X1SEOypfpgPdnDSxYxtE]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: >-
+              Your task is to make the number 24 using all of four numbers. You
+              can add, subtract, multiply or divide. You have to use all four
+              numbers. Each number may be used only once. For example, if I give
+              you "5, 5, 3, 4" a valid answer is "5 * 5 - (4 - 3)."
+
+
+              Output the answer in the format below:
+
+
+              ANSWER: 5 * 5 - (4 - 3)
+            type: system
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" _CQ3rXtekVDRp6RNF_rHl/message1
+          visualData: 986.4876590220331/358.0333719251429/280/767//
+        '[kcxSH1zW5xp0nTFQw6wcZ]:chat "Chat"':
+          data:
+            additionalParameters: []
+            cache: false
+            code: ""
+            enableFunctionUse: false
+            endpoint: https://api.groq.com/openai/v1/chat/completions
+            headers:
+              - key: Authorization
+                value: Bearer <your-api-key>
+              - key: Content-Type
+                value: application/json
+            maxTokens: 3000
+            model: local-model
+            overrideModel: llama3-8b-8192
+            parallelFunctionCalling: true
+            stop: ""
+            temperature: 1
+            text: ""
+            top_p: 1
+            useAdditionalParametersInput: false
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useHeadersInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          visualData: 1444.9948638443186/555.469962093925/230/768//
+    TeO-LwA2roFO6Nq5sZJkt:
+      metadata:
+        description: ""
+        id: TeO-LwA2roFO6Nq5sZJkt
+        name: 3. Game of 24/4. Verify answer with AI
+      nodes:
+        '[04aYqTgnS391RxRqEh7nu]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: You're a mathematician. Solve the following mathematical expression
+              by following the DMAS (Division, Multiplication, Addition,
+              Subtraction) order of operations. Ensure you perform the
+              operations in the correct sequence to arrive at the accurate
+              result. Provide only the numerical answer, without any
+              explanations or additional text.
+            type: system
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" OXxtHYTtXjhmEuLI6H7VA/message1
+          visualData: 1014.7180914550909/1663.3411490726696/280/992//
+        '[1rSNZ8kCqffXCXft0hVNn]:object "Object"':
+          data:
+            jsonTemplate: |-
+              {
+                "solution": "{{solution}}",
+                "isCorrect": "{{isCorreect}}"
+              }
+          outgoingConnections:
+            - output->"Graph Output" UpISgt55HTE9k5KtkJGQY/value
+          visualData: 2501.093108184641/995.3281525632186/230/960//
+        '[5h2UYzv58JlBPCEMwx4Hd]:extractRegex "Extract Regex"':
+          data:
+            errorOnFailed: false
+            multilineMode: false
+            regex: "ANSWER: (.*)"
+            useRegexInput: false
+          outgoingConnections:
+            - output1->"Object" 1rSNZ8kCqffXCXft0hVNn/solution
+            - output1->"Prompt" vLvQ5YNsOTKl1RtQtYc2E/input
+          visualData: 1449.0975581775879/899.9820068622591/239.29086798778644/852//
+        '[5qIU4kybUYjNmZxFCimRy]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: 6 * (5 + 5) - 1
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" OXxtHYTtXjhmEuLI6H7VA/message2
+          visualData: 1009.5535169486363/1875.1323141204746/280/995//
+        '[Ax9PEp-WBdxUUymktMHty]:compare "Compare"':
+          data:
+            comparisonFunction: ==
+          outgoingConnections:
+            - output->"Object" 1rSNZ8kCqffXCXft0hVNn/isCorreect
+          visualData: 2203.9973123996983/1209.6169133011851/190/959//
+        '[HryzGp2pbOSVXgRI8emkn]:graphInput "Graph Input"':
+          data:
+            dataType: string
+            id: previousSolutions
+            promptText: ""
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"Text" ypzj3Xo9rfNolppuIkiK6/previousSolutions
+          visualData: 128.12510861896808/808.8590807271797/330/935//
+        '[OXxtHYTtXjhmEuLI6H7VA]:assemblePrompt "Assemble Prompt"':
+          outgoingConnections:
+            - prompt->"Chat" oFyDFzAsTc9tj5xq2vJaO/prompt
+          visualData: 1431.0548332079488/1956.6102622419494/280/992//
+        '[PhU6pqxwpV0V0E0dMr0GG]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: >-
+              **Task:** Create the number 24 using all four given numbers. You
+              can use addition, subtraction, multiplication, or division. Each
+              number must be used exactly once.
+
+
+              **Example:** For the numbers "5, 5, 3, 4," a valid solution is "5 * 5 - (4 - 3)."
+
+
+              **Output Format:** Provide the answer in the following format:
+
+
+              ```
+
+              ANSWER: 5 * 5 - (4 - 3)
+
+              ```
+            text: ""
+            type: system
+            useIsCacheBreakpointInput: false
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Text" ypzj3Xo9rfNolppuIkiK6/systemPrompt
+          visualData: 175.32070419222373/431.0556017041692/280/927//
+        '[UpISgt55HTE9k5KtkJGQY]:graphOutput "Graph Output"':
+          data:
+            dataType: boolean
+            id: output
+          visualData: 2794.92242638351/1058.821842731427/330/961//
+        '[_IQ_NUj6fdhN5oTNVTmQa]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: "59"
+            type: assistant
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" OXxtHYTtXjhmEuLI6H7VA/message3
+          visualData: 1012.8469656857848/2091.940494925056/280/994//
+        '[_d8JBGbL4gDMwkq6uV_bg]:chat "Chat"':
+          data:
+            additionalParameters: []
+            cache: false
+            code: ""
+            enableFunctionUse: false
+            endpoint: https://api.groq.com/openai/v1/chat/completions
+            headers:
+              - key: Authorization
+                value: Bearer <your-api-key>
+              - key: Content-Type
+                value: application/json
+            maxTokens: 3000
+            model: local-model
+            overrideModel: llama-3.1-70b-versatile
+            parallelFunctionCalling: true
+            stop: ""
+            temperature: 1
+            text: ""
+            top_p: 1
+            useAdditionalParametersInput: false
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useHeadersInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          outgoingConnections:
+            - response->"Extract Regex" 5h2UYzv58JlBPCEMwx4Hd/input
+          visualData: 1454.405662396442/560.29542038262/230/930//
+        '[aRf7CiQREUuVpdYCSfHR9]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: "{{input}}"
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" yCSDsHue4K3kqwmiDe_Iz/message2
+          visualData: 563.9617423886382/1005.305037497432/280/912//
+        '[b-K0CraJK2DD09TrE-9ZY]:number "Number"':
+          data:
+            round: false
+            roundTo: 0
+            value: 24
+          outgoingConnections:
+            - value->"Compare" Ax9PEp-WBdxUUymktMHty/b
+          visualData: 1903.551967677634/1390.8253146023576/230/987//
+        '[oFyDFzAsTc9tj5xq2vJaO]:chat "Chat"':
+          data:
+            additionalParameters: []
+            cache: false
+            code: ""
+            enableFunctionUse: false
+            endpoint: https://api.groq.com/openai/v1/chat/completions
+            headers:
+              - key: Authorization
+                value: Bearer <your-api-key>
+              - key: Content-Type
+                value: application/json
+            maxTokens: 3000
+            model: local-model
+            overrideModel: llama-3.1-70b-versatile
+            parallelFunctionCalling: true
+            promptText: ""
+            stop: ""
+            temperature: 0.2
+            text: ""
+            top_p: 1
+            useAdditionalParametersInput: false
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useHeadersInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          outgoingConnections:
+            - response->"Compare" Ax9PEp-WBdxUUymktMHty/a
+          visualData: 1899.8474507282963/1050.752203153379/230/959//
+        '[pGuIQCyQzJfePOXqET7o8]:comment "Comment"':
+          data:
+            backgroundColor: rgba(0,0,0,0.05)
+            color: rgba(255,255,255,1)
+            height: 972.8582081071804
+            text: "#### One-shot prompt to check answer"
+          visualData: 982.0020565744759/1339.0471058793253/807.3952736035726/986//
+        '[sBESu5Blz6QOBrHUg-vJl]:graphInput "Graph Input"':
+          data:
+            dataType: string
+            defaultValue: 5 5 1 6
+            id: input
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"Prompt" aRf7CiQREUuVpdYCSfHR9/input
+          visualData: 125.38800350560112/1021.2233357652295/330/914//
+        '[vLvQ5YNsOTKl1RtQtYc2E]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: "{{input}}"
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" OXxtHYTtXjhmEuLI6H7VA/message4
+          visualData: 1014.0879656072722/1446.6078681611634/280/997//
+        '[yCSDsHue4K3kqwmiDe_Iz]:assemblePrompt "Assemble Prompt"':
+          outgoingConnections:
+            - prompt->"Chat" _d8JBGbL4gDMwkq6uV_bg/prompt
+          visualData: 1012.4261686114794/680.8708673789481/280/924//
+        '[ypzj3Xo9rfNolppuIkiK6]:text "Text"':
+          data:
+            promptText: ""
+            text: >-
+              {{systemPrompt}}
+
+
+              Important: Do not use any of the previous incorrect solutions listed below. Ensure your solution is unique and not a repetition of these:
+
+
+              ```
+
+              {{previousSolutions}}
+
+              ```
+          outgoingConnections:
+            - output->"Assemble Prompt" yCSDsHue4K3kqwmiDe_Iz/message1
+          visualData: 566.9614115089712/571.6113184626039/330/929//
+    cDiTbuspaqeFyTNJpXz0S:
+      metadata:
+        description: ""
+        id: cDiTbuspaqeFyTNJpXz0S
+        name: 3. Game of 24/3. JS loop
+      nodes:
+        '[-BNWjSwpdidkdgXV-G5cn]:graphOutput "Graph Output"':
+          data:
+            dataType: boolean
+            id: output
+          visualData: 2830.9360740808447/982.7930309259427/330/943//
+        '[9AInjMM-TAQ_4DNS7mhcM]:extractRegex "Extract Regex"':
+          data:
+            errorOnFailed: false
+            multilineMode: false
+            regex: "ANSWER: (.*)"
+            useRegexInput: false
+          outgoingConnections:
+            - output1->"External Call" aD_D0eqkO8We6MkAO8x5r/arguments
+            - output1->"Object" kRWu51bFXakpCso8wGD8h/solution
+          visualData: 1449.0975581775879/899.9820068622591/239.29086798778644/852//
+        '[Kwh1SvY7oxsB0_KHQsu3L]:number "Number"':
+          data:
+            round: false
+            roundTo: 0
+            value: 24
+          outgoingConnections:
+            - value->"Compare" Q2qXbZoAqvKPCebM3csfz/b
+          visualData: 1782.0320401539605/1300.5277293634658/230/876//
+        '[OrU8eOzgzaNz_qYsre7nx]:chat "Chat"':
+          data:
+            additionalParameters: []
+            cache: false
+            code: ""
+            enableFunctionUse: false
+            endpoint: https://api.groq.com/openai/v1/chat/completions
+            headers:
+              - key: Authorization
+                value: Bearer <your-api-key>
+              - key: Content-Type
+                value: application/json
+            maxTokens: 3000
+            model: local-model
+            overrideModel: llama-3.1-70b-versatile
+            parallelFunctionCalling: true
+            stop: ""
+            temperature: 1
+            text: ""
+            top_p: 1
+            useAdditionalParametersInput: false
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useHeadersInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          outgoingConnections:
+            - response->"Extract Regex" 9AInjMM-TAQ_4DNS7mhcM/input
+          visualData: 1454.405662396442/560.29542038262/230/930//
+        '[PJRSQfR4HBZQ2H7olSd5N]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: "{{input}}"
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" anP16HzKCgqlG_q-RQz_j/message2
+          visualData: 563.9617423886382/1005.305037497432/280/912//
+        '[Q2qXbZoAqvKPCebM3csfz]:compare "Compare"':
+          data:
+            comparisonFunction: ==
+          outgoingConnections:
+            - output->"Object" kRWu51bFXakpCso8wGD8h/isCorreect
+          visualData: 2115.9639513617694/1155.5964417551832/190/934//
+        '[aD_D0eqkO8We6MkAO8x5r]:externalCall "External Call"':
+          data:
+            functionName: calculate
+            useErrorOutput: false
+            useFunctionNameInput: false
+          outgoingConnections:
+            - result->"Compare" Q2qXbZoAqvKPCebM3csfz/a
+          visualData: 1815.3761467585011/1079.8576405173453/180/937//
+        '[anP16HzKCgqlG_q-RQz_j]:assemblePrompt "Assemble Prompt"':
+          outgoingConnections:
+            - prompt->"Chat" OrU8eOzgzaNz_qYsre7nx/prompt
+          visualData: 1012.4261686114794/680.8708673789481/280/924//
+        '[kRWu51bFXakpCso8wGD8h]:object "Object"':
+          data:
+            jsonTemplate: |-
+              {
+                "solution": "{{solution}}",
+                "isCorrect": "{{isCorreect}}"
+              }
+          outgoingConnections:
+            - output->"Graph Output" -BNWjSwpdidkdgXV-G5cn/value
+          visualData: 2449.073394844047/907.2947915252895/230/899//
+        '[l5O5QJRKyAjPHz4OBZG8N]:text "Text"':
+          data:
+            promptText: ""
+            text: >-
+              {{systemPrompt}}
+
+
+              Important: Do not use any of the previous incorrect solutions listed below. Ensure your solution is unique and not a repetition of these:
+
+
+              ```
+
+              {{previousSolutions}}
+
+              ```
+          outgoingConnections:
+            - output->"Assemble Prompt" anP16HzKCgqlG_q-RQz_j/message1
+          visualData: 566.9614115089712/571.6113184626039/330/929//
+        '[o9PTcmdHB_sHtisoPEhhN]:graphInput "Graph Input"':
+          data:
+            dataType: string
+            id: previousSolutions
+            promptText: ""
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"Text" l5O5QJRKyAjPHz4OBZG8N/previousSolutions
+          visualData: 128.12510861896808/808.8590807271797/330/935//
+        '[r4tE1TPIvXkWAM-MdgakC]:graphInput "Graph Input"':
+          data:
+            dataType: string
+            id: input
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"Prompt" PJRSQfR4HBZQ2H7olSd5N/input
+          visualData: 125.38800350560112/1021.2233357652295/330/914//
+        '[vKj-iGw_FjRExjkreBCZO]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: >-
+              **Task:** Create the number 24 using all four given numbers. You
+              can use addition, subtraction, multiplication, or division. Each
+              number must be used exactly once.
+
+
+              **Example:** For the numbers "5, 5, 3, 4," a valid solution is "5 * 5 - (4 - 3)."
+
+
+              **Output Format:** Provide the answer in the following format:
+
+
+              ```
+
+              ANSWER: 5 * 5 - (4 - 3)
+
+              ```
+            type: system
+            useIsCacheBreakpointInput: false
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Text" l5O5QJRKyAjPHz4OBZG8N/systemPrompt
+          visualData: 175.32070419222373/431.0556017041692/280/927//
+    leYzer01qH45JoW32zqVW:
+      metadata:
+        description: ""
+        id: leYzer01qH45JoW32zqVW
+        name: 1. N-shot/1. No-shot
+      nodes:
+        '[N2w0J0kJUlls0E9heUmD_]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: "{{input}}"
+            type: user
+            useIsCacheBreakpointInput: false
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" nmVo3ZFZwhHtabBIxcC4V/message2
+          visualData: 629.4224204049431/795.1733528627042/280/734//
+        '[TFHAyI-UuBEXAtSARsNV2]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: >-
+              Job Title: Operations Manager
+
+
+              Job Description:
+
+
+              We are looking for an experienced Operations Manager to oversee our company's daily operations and ensure efficiency and effectiveness in all aspects of our business. The ideal candidate will have a strong background in operations management, exceptional leadership skills, and a strategic mindset.
+
+
+              Company name is Namek Co., Ltd. Located in Namekian Village.
+
+
+              Responsibilities:
+
+
+              Oversee day-to-day operations and ensure they align with the company's goals and objectives.
+
+              Develop and implement operational policies, procedures, and systems to improve efficiency and productivity.
+
+              Manage budgets, inventory, and other resources to optimize profitability.
+
+              Lead and motivate a team of employees to achieve operational targets.
+
+              Collaborate with other departments to streamline processes and improve cross-functional communication.
+
+              Analyze operational performance data and generate reports to identify areas for improvement.
+
+              Qualifications:
+
+
+              Bachelor's degree in Business Administration, Operations Management, or a related field.
+
+              Proven experience in operations management.
+
+              Strong leadership and team management skills.
+
+              Excellent analytical and problem-solving skills.
+
+              Proficiency in operations management software and tools.
+
+              Strong communication and interpersonal skills.
+
+              This is a full-time position with a competitive salary and benefits package. If you are a strategic thinker with a passion for driving operational excellence, we encourage you to apply!
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" nmVo3ZFZwhHtabBIxcC4V/message1
+          visualData: 649.3050060094417/312.77037305164237/280/738//
+        '[UFinboB4JsidQO9zYct6T]:text "Text"':
+          data:
+            promptText: ""
+            text: Find Job Title, Company, Location and output in JSON format. Your output
+              should contain only JSON format.
+          outgoingConnections:
+            - output->"Graph Input" f5xKs_WOjuRd1LL_QwGe2/default
+          visualData: 242.86950706688322/628.4640670781423/330/742//
+        '[dgHJhTEuTW-WRxGBtWkAE]:graphOutput "Graph Output"':
+          data:
+            dataType: string
+            id: output
+          visualData: 1796.306967262027/575.8857210596991/330/727//
+        '[f5xKs_WOjuRd1LL_QwGe2]:graphInput "Graph Input"':
+          data:
+            dataType: string
+            id: input
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Prompt" N2w0J0kJUlls0E9heUmD_/input
+          visualData: 239.09724952529055/848.6023934920128/330/744//
+        '[l1H6KY9CxrgBUxIOK-38Y]:chat "Chat"':
+          data:
+            additionalParameters: []
+            cache: false
+            code: ""
+            enableFunctionUse: false
+            endpoint: https://api.groq.com/openai/v1/chat/completions
+            headers:
+              - key: Authorization
+                value: Bearer <your-api-key>
+              - key: Content-Type
+                value: application/json
+            maxTokens: 3000
+            model: local-model
+            overrideModel: llama3-8b-8192
+            parallelFunctionCalling: true
+            stop: ""
+            temperature: 1
+            text: ""
+            top_p: 1
+            useAdditionalParametersInput: false
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useHeadersInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          outgoingConnections:
+            - response->"Graph Output" dgHJhTEuTW-WRxGBtWkAE/value
+          visualData: 1381.1902105865495/517.0514011885106/230/692//
+        '[nmVo3ZFZwhHtabBIxcC4V]:assemblePrompt "Assemble Prompt"':
+          outgoingConnections:
+            - prompt->"Chat" l1H6KY9CxrgBUxIOK-38Y/prompt
+          visualData: 1018.3990079862062/684.2395692965692/280/739//
+    pIiaNwBUiJGAtacYwDZDu:
+      metadata:
+        description: ""
+        id: pIiaNwBUiJGAtacYwDZDu
+        name: 2. Translate and Summarize/2. One-shot
+      nodes:
+        '[4zjgX9Q7w6aK3CtEjuQOI]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: >-
+              Once nearly hunted to extinction, Pacific gray whales in Mexico's
+              Laguna San Ignacio now seem to be as curious about us as we are
+              about them.
+
+
+              "Here she comes again!" our guide, José Sanchez, announces as a massive gray whale approaches us for the fifth time in 45 minutes. Each time our curious new friend returns to our idle fishing boat, it stays a bit longer on the surface, watching us as we watch her.
+
+
+              This is our final outing to see what locals call "the friendlies" – the gray whales in Mexico's Laguna San Ignacio. As our boat quietly sits with its engine off, this 40-ton whale playfully rubs up against the sides of the boat, raising the top half of its white-speckled body and cosying up right along the hull as if to check out all six of us onboard. When the whale's eye – which is about the size of a baseball – breaks the surface and meets mine for a moment, I shriek with delight.
+
+
+              We're told to give whales distance, but what happens when they come to watch us?
+
+
+              Located on the western coast of Baja California Sur's peninsula, the Laguna San Ignacio is considered the last undisturbed breeding and calving lagoon of the Pacific gray whale. The protected whale sanctuary is also home to one of the world's most unusual wildlife encounters: here, curious whales regularly, and voluntarily, seek out contact with humans.
+
+
+              Alamy In the Laguna San Ignacio, curious gray whales voluntarily approach boats and people (Credit: Alamy)Alamy
+
+              In the Laguna San Ignacio, curious gray whales voluntarily approach boats and people (Credit: Alamy)
+
+              Every year from January to mid-April, thousands of gray whales arrive in the lagoon during a 19,300km journey from the icy waters of the Arctic to the warm waters of Baja California Sur to mate and give birth. While these are now safe waters for nursing and breeding, gray whales were once hunted here. Yet, the animals now seem to have learned to trust humans. In fact, during my recent whale-watching trip with Sanchez's eco-tourism company Pure Baja Travels, we witnessed mothers bringing their calves over to boats to present them like proud parents.
+
+
+              These unique encounters have influenced the conservation and protection of these gentle giants and spurred a thrilling – and responsible – whale-watching experience like nowhere else.
+
+
+              Why do Baja's gray whales seek out human contact?
+
+              For more than 50 years, gray whales in Baja have shown they seem to be as curious about us as we are them. Marine biologists believe a combination of circumstances contribute to this unique behaviour.
+
+
+              "In the lagoon, today, there are no real threats," says Dr Steven Swartz, a cetacean researcher who has been studying gray whales at Laguna San Ignacio for 45 years. While gray whales have been known to occasionally approach humans elsewhere, according to Swartz, this is the only place where they regularly do so, and where the animals linger and often rise above the water's surface, allowing humans to touch them.
+
+
+              Alamy In the protected reserve, whales often rise above the water, as if asking to be touched (Credit: Alamy)Alamy
+
+              In the protected reserve, whales often rise above the water, as if asking to be touched (Credit: Alamy)
+
+              Whale-watching is only permitted in a specific "zone" of the protected whale sanctuary, and there are strict rules: only 16 pangas (small fishing boats) are allowed in this zone at a time. To not overwhelm the whales, all boats must turn off their motors when whales approach. And most importantly, boat operators don't chase or pursue the whales.
+
+
+              "[Guides] put you in the presence of the whales, and let the whales decide if they're going to come over, and say hello or not," says Swartz.
+
+
+              But why do the whales seem to come and say hello? "Mammals are curious; they are sentient enough to learn about their environment, and they learn by exploring," Swartz explains, adding that mothers pass on this curiosity towards boats and people to their calves. "[The whales] are capable of remembering."
+
+
+              Whales, in general, are very tactile; they like to rub and touch; that's how they communicate, Swartz says. Pacific gray whales aren't busy looking for food (they do that in the Arctic), so perhaps they're also bored, he suggests. While we cannot know exactly why the whales do what they do, Swartz and other marine biologists all agree the whales approach the boats voluntarily.
+
+
+              Kathleen Rellihan Pachico Mayoral is considered something of a gray whale "saviour" around these parts (Credit: Kathleen Rellihan)Kathleen Rellihan
+
+              Pachico Mayoral is considered something of a gray whale "saviour" around these parts (Credit: Kathleen Rellihan)
+
+              A model for community-driven conservation
+
+              Gray whales were nearly hunted to extinction during the 18th and 19th Centuries, and as a result, the animals tended to act aggressively towards humans – so much so that local fishermen even dubbed them "devil fish" and avoided them. But in 1972, a man named Francisco (Pachico) Mayoral was out fishing in Baja when a whale surfaced and lingered by his boat. Curiosity compelled him to put his hand in the water. The whale rubbed against Mayoral and stayed by his hand.
+
+
+              News of Mayoral's experience spread, and locals, much less afraid, waited patiently to experience similar friendly encounters. "Gray whales specifically are naturally curious and have never been afraid of approaching floating items in the water. Humans hurt them, and then the gray whales reacted to that interaction," Sanchez tells me. "After [Mayoral's] first peaceful contact, humans started to realise gray whales are not the scary and mad animals we thought they were."
+
+
+              Sanchez was the first Mexican naturalist to guide whale-watching tours in the lagoon back in the 1990s, and his own eco-tourism company now has a base camp on San Ignacio Lagoon. "As time has gone by, humans are becoming less afraid to let gray whales get closer to the point of close contact. I believe this is [also true for gray whales]."
+
+
+              In 1972, the Mexican government created the San Ignacio Lagoon nature reserve, and in 1988, the lagoon was also declared a whale sanctuary and biosphere reserve. Five years later, it was designated as a Unesco World Heritage Site. The gray whale population recovered and was removed from the endangered species protection in 1994.
+
+
+              José Sanchez Mayoral's first peaceful "encounter" with the whales has inspired conservation and new eco-tourism efforts (Credit: José Sanchez)José Sanchez
+
+              Mayoral's first peaceful "encounter" with the whales has inspired conservation and new eco-tourism efforts (Credit: José Sanchez)
+
+              That year, Mayoral tipped off environmentalists that Mitsubishi and the Mexican government were planning to build a massive salt factory within the nature reserve. The salt mine was thwarted in 2000 by a robust effort from the local and international community – drawing activists from Robert F Kennedy Jr to actor Christopher Reeves to Baja's shores to join the protest. The whales recovered and were removed from the endangered species protection in 1994, and today, the battle to save Baja's gray whales is considered one of the greatest wildlife conservation success stories of our time.
+
+
+              Mayoral passed away in 2013, but he's been referred to as the "saviour of gray whales" and the grandfather of whale-watching in Baja. Ever since his first peaceful encounter, visitors and locals alike have sought out a similar experience in Baja the lagoon. In fact, Mayoral's family is still running whale-watching trips.
+
+
+              More like this:
+
+
+              • An ethical – and safe – place to swim with whales
+
+
+              • The hidden wonders of Mexico's sacred underwater world
+
+
+              • Thirteen photos that will make you care about the ocean
+
+
+              Today, the human-whale encounters in the San Ignacio Lagoon have not only fuelled conservation efforts but also inspired a regulated eco-tourism industry, which provides a meaningful source of income to local communities.
+
+
+              "Eco-tourism is the economic basis for the community. [The people here] watch over the lagoon and whales, and work together to coordinate sustainable whale-watching so that they don't destroy or overuse the resource that's providing income for them: the whales," says Swartz.
+
+
+              Kathleen Rellihan Pure Baja Travel's base camp is located on the banks of the lagoon (Credit: Kathleen Rellihan)Kathleen Rellihan
+
+              Pure Baja Travel's base camp is located on the banks of the lagoon (Credit: Kathleen Rellihan)
+
+              On Pure Baja Travel's five-day trips, travellers embark on six whale-watching outings (which give the animals more opportunities to come to you on their own terms) while also learning about the community's conservation efforts in the lagoon. The camp is only open in February through March and then it disappears when the animals migrate in April.
+
+
+              From our tented base camp right on the banks of the lagoon, I awoke nearly every morning to the rumbling sounds of whales in the distance and could see their heart-shaped vapour spouts as we ate dinner. To be sleeping right along their sanctuary was almost as exciting as seeing them an arm's distance away during the day.
+
+
+              A new generation steps up to save Baja's gray whales
+
+              While the San Ignacio Lagoon where the gray whales give birth is now protected, continuing to safeguard the animals and support the local communities who guard them is more vital than ever. Climate change is now impacting the lagoon and the gray whales on their migratory path.
+
+
+              Mexican climate activist Xiye Bastida hopes to inspire a new generation to step up and take action by co-producing and starring in a documentary that will be released in the coming months called The Whale Lagoon. At 22 years old, Bastida connects the grassroots conservation efforts that started a generation ago to the climate crisis facing this generation. She joined WildCoast, an international nonprofit organisation that has been a leading force in the gray whale conservation efforts for more than 40 years, to amplify the voices of the community.
+
+
+              Claudio Contreras The restoration of the lagoon's mangroves is an important part of the fight to help sustain the whales' migratory path (Credit: Claudio Contreras)Claudio Contreras
+
+              The restoration of the lagoon's mangroves is an important part of the fight to help sustain the whales' migratory path (Credit: Claudio Contreras)
+
+              WildCoast's co-founder and executive director, Serge Dedina, helped to successfully lobby the Mexican government for San Ignacio Lagoon to be included in the El Vizcaíno Biosphere Reserve, the largest wildlife refuge in Latin America, back in 1988. Now he says Laguna San Ignacio is a global model showing how to protect wildlife while creating sustainable development. The organisation helps to train ecotourism guides, enhance outreach and expand women-led mangrove restoration programmes that help fight climate change.
+
+
+              With the climate crisis affecting the migratory path of the whales, the restoration of mangroves (which sequester 10 times more carbon than tropical forests) is another battle Laguna San Ignacio area residents are fighting every day, along with needing to regulate development and tourism around the lagoons.
+
+
+              "There's something about the whales that makes you feel overwhelmed, with almost a responsibility to take care of them. When the whale pushes up her calf so you can touch it, that is an immense amount of trust," Bastida tells BBC.
+
+
+              "We call them the friendly whales, but I think they are the conscious whales, and they want us to be more conscious and more in touch," she adds. "I hope that if people see the film or if they are fortunate to see the whales, they can find a piece of themselves they didn't know they had – an instinct to protect [them]."
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" EQt-OhzcIsJQLV-u78RN9/message2
+          visualData: 1009.3023426909555/-362.90288992559664/280/775//
+        '[APJ1g-ybbTlwrq1TJL36e]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: Answer in a consistent style.
+            type: system
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" EQt-OhzcIsJQLV-u78RN9/message1
+          visualData: 1481.638196757902/-187.8486467054052/280/773//
+        '[EQt-OhzcIsJQLV-u78RN9]:assemblePrompt "Assemble Prompt"':
+          outgoingConnections:
+            - prompt->"Chat" enwWZV9-RaJtKcCyhXnLa/prompt
+          visualData: 1483.9056390521312/27.580994882391362/280/737//
+        '[Y7VehtjLwacndq9TEttXc]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: >-
+              ### Key Highlights:
+
+
+              - **Curious Whales**: Unlike typical whale-watching experiences where humans observe whales, here, the whales often approach boats and interact with observers, making it a rare and memorable encounter.
+
+
+              - **Biodiversity**: The region is home to various whale species, including humpbacks and gray whales, which migrate to these warm waters to breed and give birth. The sanctuary's conservation efforts ensure the protection of these majestic creatures and their habitat.
+
+
+              - **Tourist Experience**: Visitors can enjoy guided tours that allow them to witness these interactions up close. The experience is designed to be respectful of wildlife, adhering to strict guidelines to minimize human impact on the whales.
+
+
+              - **Conservation Efforts**: The sanctuary emphasizes the importance of protecting marine ecosystems while providing educational opportunities for tourists about marine life and conservation.
+
+
+              This destination stands out as a remarkable place for those looking to experience the wonder of whales in a way that few other locations can offer.
+            type: assistant
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" EQt-OhzcIsJQLV-u78RN9/message3
+          visualData: 1008.5286038184184/51.90519067358457/280/774//
+        '[enwWZV9-RaJtKcCyhXnLa]:chat "Chat"':
+          data:
+            additionalParameters: []
+            cache: false
+            code: ""
+            enableFunctionUse: false
+            endpoint: https://api.groq.com/openai/v1/chat/completions
+            headers:
+              - key: Authorization
+                value: Bearer <your-api-key>
+              - key: Content-Type
+                value: application/json
+            maxTokens: 3000
+            model: local-model
+            overrideModel: llama-3.1-70b-versatile
+            parallelFunctionCalling: true
+            stop: ""
+            temperature: 0.5
+            text: ""
+            top_p: 1
+            useAdditionalParametersInput: false
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useHeadersInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          visualData: 1948.1816029828474/-48.885446190688015/230/734//
+        '[hGLzlrxz4lqsFLHqEh91o]:comment "Comment"':
+          data:
+            backgroundColor: rgba(0,0,0,0.05)
+            color: rgba(255,255,255,1)
+            height: 958.7799217465936
+            text: "#### Example prompt"
+          visualData: 970.3752590142984/-510.37515933425624/359.2684886261791/727//
+        '[owxIZnx5ltblvgs0j3mPe]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: >-
+              TikTok 和字节跳动将如何挑战美国的“非售即禁”法案
+
+
+              杰里米·豪威尔（Jeremy Howell）
+
+              Role,BBC 国际部
+
+              2024 年 9 月 16 日
+
+              TikTok 的中国母公司字节跳动将于 9 月 16 日向美国法院提起诉讼，挑战此前通过的“非售即禁”法案。
+
+
+              字节跳动将辩称，对 TikTok 的禁令侵犯了美国宪法规定的言论自由权。
+
+
+              美国通过了禁令 但让 TikTok 消失还有待时日
+
+              “卧底”调查 TikTok 推送给年轻人的 AI 视频、假信息和毁谤式评论
+
+              美国众议院通过法案提出 TikTok 不出售就禁止 潜在买家有谁？
+
+              TikTok 美国面临下架 它是否对西方国家构成真正威胁？
+
+              美国众议院通过法案 TikTok 在美面临被迫出售或彻底被禁
+
+              美国如何用禁令威胁 TikTok？
+
+              美国总统拜登（Joe Biden）今年 4 月签署了《保护美国人免受外国对手控制应用法案》（Protecting Americans Against Foreign Adversary Controlled Applications Act），该法案在国会获得了压倒性的支持。
+
+
+              该法案禁止在美国运营来自俄罗斯、中国、伊朗和朝鲜等对手国家的应用程序。
+
+
+              当局利用新法案对 TikTok 的母公司下达命令，责令其将应用程序出售给非中国公司，否则将面临被禁。字节跳动必须在 2025 年 1 月 19 日之前完成这项工作。
+
+
+              位于中国北京的字节跳动总部。图像来源，Getty Images
+
+              图像加注文字，美国担心，字节跳动可能会将 TikTok 美国用户的详细资料传回北京总部和中国情报部门。字节跳动否认该说法。
+
+              美国当局尤其担心 TikTok。该公司 20%的股份由中国公司字节跳动的创始人持有。其余股份由投资公司和公司员工持有。
+
+
+              美国国会和白宫认为，TikTok 可以从 1.7 亿美国用户那里收集到大量数据，而字节跳动可能会将其转交给中国情报部门，以帮助监视美国。
+
+
+              TikTok 收集用户个人数据的方式与 Facebook、Instagram、Snapchat 和 YouTube 等其它社交媒体应用相同。不同的是，美国当局信任这些国内公司。
+
+
+              还有人担心，TikTok 向用户推荐观看内容的“为你”（For You）推送功能会被中国当局用作洗脑工具。
+
+
+              TikTok 禁令可能如何运作？
+
+              如果美国当局要禁用 TikTok，预计会禁止苹果（Apple）和谷歌（Google）等公司运营的应用程序商店在美国提供 TikTok 下载。
+
+
+              这也意味着 TikTok 的美国用户将无法再从应用商店获得该应用的更新。
+
+
+              美国的互联网托管服务也将被禁止支持 TikTok。
+
+
+              白宫表示，它希望终止中国持有的 TikTok 所有权，而不是屏蔽该应用本身。
+
+
+              谁在挑战禁令，争论点在何处？
+
+              TikTok 首席执行官周受资在美国国会作证。（资料图片）图像来源，Reuters
+
+              图像加注文字，TikTok 首席执行官周受资表示，禁止该应用程序将侵犯美国公民的言论自由。
+
+              9 月 16 日，哥伦比亚特区巡回上诉法院的一个法官小组将听取三个团体对新法律提起诉讼的口头辩论。
+
+
+              这三个团体分别是：字节跳动及其美国分公司 TikTok Inc、一群 TikTok 内容创作者、一个名为 BASED 的保守派政治组织，该组织为年轻人提供 TikTok 内容。
+
+
+              字节跳动和其它组织认为，成千上万的美国公民在 TikTok 上创建内容，禁止 TikTok 将侵犯他们根据宪法第一修正案享有的权利，该修正案致力于保障言论自由。
+
+
+              TikTok 首席执行官周受资告诉美国用户：“我们有信心，我们将继续在法庭上为你们的权利而战。事实和宪法都站在我们这边……请放心，我们不会离开。”
+
+
+              字节跳动称其不可能出售 TikTok，因为这需要中国政府的许可，而中国政府已经表示将拒绝批准。
+
+
+              字节跳动还表示，禁止 TikTok 将危及美国的就业机会。
+
+
+              根据该公司在 2024 年 3 月发布的数据，有 700 多万美国小企业和个人在 TikTok 上发布内容。该公司称，他们因此获得了 150 亿美元（120 亿英镑）的收入。
+
+
+              TikTok content creators gather outside the Capitol on 22 March 2023 图像来源，Getty Images
+
+              图像加注文字，TikTok 在美国有 1.7 亿用户，主要是年轻人。在法案审议期间，国会大楼外聚集了年轻的抗议者。
+
+              特朗普（Donald Trump）在 2020 年担任美国总统期间曾试图禁止该应用程序。
+
+
+              不过，他最近也开始在该应用开设账号，并反对禁令。他支持字节跳动的观点，认为禁令将使 Facebook 等竞争对手的社交媒体应用程序在市场中拥有过多权力。
+
+
+              字节跳动称，美国用户的数据没有存储在中国，并坚称这些数据不可能传回中国。该公司称，它一直在得克萨斯州建立数据中心，专门用于存储美国用户数据。
+
+
+              字节跳动和其他诉讼方以及美国司法部都要求上诉法院在 12 月 6 日前作出裁决。在那之后，此案可能会被提交给美国最高法院。
+
+
+              美国的 TikTok 禁令对世界其它地区意味着什么？
+
+              印度、尼泊尔、阿富汗和索马里已经禁止使用 TikTok。TikTok 的国际版本身在中国也被禁用。
+
+
+              欧盟委员会已经通知员工不要在工作设备上安装该应用，英国政府和议会也是如此。
+
+
+              如果美国禁用 TikTok，外界认为许多美国盟国也可能会效仿该做法，颁布禁令。
+
+
+              中国当局多年来也一直禁止美国社交媒体应用程序。
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Chat" sPM0TxjgC8ILCsmGG8xjH/prompt
+          visualData: 549.9929688915659/652.5343122408007/280/771//
+        '[sPM0TxjgC8ILCsmGG8xjH]:chat "Chat"':
+          data:
+            additionalParameters: []
+            cache: false
+            code: ""
+            enableFunctionUse: false
+            endpoint: https://api.groq.com/openai/v1/chat/completions
+            headers:
+              - key: Authorization
+                value: Bearer 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
+              - key: Content-Type
+                value: application/json
+            maxTokens: 3000
+            model: local-model
+            overrideModel: llama3-8b-8192
+            parallelFunctionCalling: true
+            stop: ""
+            temperature: 1
+            text: ""
+            top_p: 1
+            useAdditionalParametersInput: false
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useHeadersInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          outgoingConnections:
+            - response->"Assemble Prompt" EQt-OhzcIsJQLV-u78RN9/message4
+          visualData: 1035.5126261713806/593.7303925404185/230/743//
+        '[znwDGvE2rNHTU4K88wDre]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: You are a translator. Translate the provided article in English.
+            type: system
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Chat" sPM0TxjgC8ILCsmGG8xjH/systemPrompt
+          visualData: 548.7370590643401/389.38692705221524/280/726//
+    svI1rXkJy_XF7qQlhS8cA:
+      metadata:
+        description: ""
+        id: svI1rXkJy_XF7qQlhS8cA
+        name: 1. N-shot/2. One-shot
+      nodes:
+        '[1QihxOm9vAAe8LSRCzzyX]:graphInput "Graph Input"':
+          data:
+            dataType: string
+            id: input
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Prompt" l9j6k28_3bATGaW0sOqv0/input
+          visualData: 99.64058048923707/1068.2449697349239/330/734//
+        '[4zSZEw9OFMR2Kq8e1vOJJ]:graphOutput "Graph Output"':
+          data:
+            dataType: string
+            id: output
+          visualData: 1802.8401621707656/572.9381012300687/330/737//
+        '[7JvRXbGK_aB-l0G6Q7cP-]:assemblePrompt "Assemble Prompt"':
+          outgoingConnections:
+            - prompt->"Chat" e0MNku-Xtds6c5iYTEYPH/prompt
+          visualData: 994.7899576842797/708.1274255372367/280/738//
+        '[NKJPsdMMee1RB2K998l5n]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: >-
+              Job Title: Digital Marketing Specialist
+
+
+              Job Description:
+
+
+              We are seeking a dynamic and motivated Digital Marketing Specialist to join our growing team. The ideal candidate will have a strong understanding of the digital marketing landscape, including SEO, SEM, social media, email marketing, and content marketing.
+
+
+              Company name is Naruto Co., Ltd. Located in Konoha Village.
+
+
+              Responsibilities:
+
+
+              Develop and implement comprehensive digital marketing strategies to increase brand awareness and drive lead generation.
+
+              Manage SEO and SEM campaigns to improve search engine rankings and drive organic and paid traffic to the company's website.
+
+              Create engaging content for social media platforms, blogs, and email campaigns.
+
+              Analyze website and campaign performance using tools like Google Analytics, and provide reports with actionable insights.
+
+              Collaborate with cross-functional teams to align marketing efforts with business goals.
+
+              Qualifications:
+
+
+              Bachelor's degree in Marketing, Business, or a related field.
+
+              Proven experience in digital marketing.
+
+              Excellent understanding of SEO, SEM, and social media marketing.
+
+              Strong analytical skills and experience with Google Analytics.
+
+              Excellent communication and teamwork skills.
+
+              This is a full-time position with competitive salary and benefits. If you are a creative problem solver with a passion for digital marketing, we would love to hear from you!
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" 7JvRXbGK_aB-l0G6Q7cP-/message2
+          visualData: 479.4877658665902/185.96733693562365/280/744//
+        '[ZjL5I1SCG3CErNd2qU7-C]:comment "Comment"':
+          data:
+            backgroundColor: rgba(0,0,0,0.05)
+            color: rgba(255,255,255,1)
+            height: 825.8345248376804
+            text: "#### Example prompt"
+          visualData: 445.3266699516277/65.59561473898104/371.6968115549687/725//
+        '[aI2ut1_tCnZyFTF9mOETu]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: Answer in a consistent style.
+            type: system
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" 7JvRXbGK_aB-l0G6Q7cP-/message1
+          visualData: 984.5536931942515/477.38657472158343/280/727//
+        '[e0MNku-Xtds6c5iYTEYPH]:chat "Chat"':
+          data:
+            additionalParameters: []
+            cache: false
+            code: ""
+            enableFunctionUse: false
+            endpoint: https://api.groq.com/openai/v1/chat/completions
+            headers:
+              - key: Authorization
+                value: Bearer <your-api-key>
+              - key: Content-Type
+                value: application/json
+            maxTokens: 3000
+            model: local-model
+            overrideModel: llama3-8b-8192
+            parallelFunctionCalling: true
+            stop: ""
+            temperature: 1
+            text: ""
+            top_p: 1
+            useAdditionalParametersInput: false
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useHeadersInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          outgoingConnections:
+            - response->"Graph Output" 4zSZEw9OFMR2Kq8e1vOJJ/value
+          visualData: 1381.1902105865495/517.0514011885106/230/692//
+        '[l9j6k28_3bATGaW0sOqv0]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: "{{input}}"
+            type: user
+            useIsCacheBreakpointInput: false
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" 7JvRXbGK_aB-l0G6Q7cP-/message4
+          visualData: 537.7534199266956/1020.4160736421439/280/735//
+        '[rjQxZlcpCvY4PbCZycXiG]:text "Text"':
+          data:
+            promptText: ""
+            text: >-
+              Job Title: Operations Manager
+
+
+              Job Description:
+
+
+              We are looking for an experienced Operations Manager to oversee our company's daily operations and ensure efficiency and effectiveness in all aspects of our business. The ideal candidate will have a strong background in operations management, exceptional leadership skills, and a strategic mindset.
+
+
+              Company name is Namek Co., Ltd. Located in Namekian Village.
+
+
+              Responsibilities:
+
+
+              Oversee day-to-day operations and ensure they align with the company's goals and objectives.
+
+              Develop and implement operational policies, procedures, and systems to improve efficiency and productivity.
+
+              Manage budgets, inventory, and other resources to optimize profitability.
+
+              Lead and motivate a team of employees to achieve operational targets.
+
+              Collaborate with other departments to streamline processes and improve cross-functional communication.
+
+              Analyze operational performance data and generate reports to identify areas for improvement.
+
+              Qualifications:
+
+
+              Bachelor's degree in Business Administration, Operations Management, or a related field.
+
+              Proven experience in operations management.
+
+              Strong leadership and team management skills.
+
+              Excellent analytical and problem-solving skills.
+
+              Proficiency in operations management software and tools.
+
+              Strong communication and interpersonal skills.
+
+              This is a full-time position with a competitive salary and benefits package. If you are a strategic thinker with a passion for driving operational excellence, we encourage you to apply!
+          outgoingConnections:
+            - output->"Graph Input" 1QihxOm9vAAe8LSRCzzyX/default
+          visualData: 90.01433786601838/682.8077944069677/330/745//
+        '[zWOQC1VFmWjIdxFrr---L]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: |-
+              {
+                  "jobTitle": "Digital Marketing Specialist",
+                  "company": "Naruto Co., Ltd.",
+                  "location": "Konoha Village",
+              }
+            type: assistant
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" 7JvRXbGK_aB-l0G6Q7cP-/message3
+          visualData: 483.93360719491164/592.9827498137857/280/725//
+    xKNpUOyu7nVyJdhyttJX8:
+      metadata:
+        description: ""
+        id: xKNpUOyu7nVyJdhyttJX8
+        name: 2. Translate and Summarize/1. No-shot
+      nodes:
+        '[2ggqUi-NoMMzhA7pHLOr4]:text "Text"':
+          data:
+            promptText: ""
+            text: ""
+          outgoingConnections:
+            - output->"Graph Input" PmMZYx2ZKqioaNN-HZXXg/default
+          visualData: -157.17691655055336/620.2186335989411/330/738//
+        '[JAh3B74moDREPF4PNH6-9]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: "{{input}}"
+            type: user
+            useIsCacheBreakpointInput: false
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Chat" eIPO5U27Z1dinHuQK2x_v/prompt
+          visualData: 252.72873753804961/696.4844728644093/280/739//
+        '[NqADxPg0V9VDVqeLELQg9]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: You are a translator. Please translate and summarize the provided
+              article in English.
+            type: system
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Chat" eIPO5U27Z1dinHuQK2x_v/systemPrompt
+          visualData: 252.12012688456443/387.7748785077599/280/701//
+        '[PmMZYx2ZKqioaNN-HZXXg]:graphInput "Graph Input"':
+          data:
+            dataType: string
+            id: input
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Prompt" JAh3B74moDREPF4PNH6-9/input
+          visualData: -160.8572703786885/748.7727928700475/330/738//
+        '[eIPO5U27Z1dinHuQK2x_v]:chat "Chat"':
+          data:
+            additionalParameters: []
+            cache: false
+            code: ""
+            enableFunctionUse: false
+            endpoint: https://api.groq.com/openai/v1/chat/completions
+            headers:
+              - key: Authorization
+                value: Bearer <your-api-key>
+              - key: Content-Type
+                value: application/json
+            maxTokens: 3000
+            model: local-model
+            overrideModel: llama3-8b-8192
+            parallelFunctionCalling: true
+            stop: ""
+            temperature: 0.2
+            text: ""
+            top_p: 1
+            useAdditionalParametersInput: false
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useHeadersInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          visualData: 713.1366171673847/524.9568439528994/230/708//
+  metadata:
+    description: ""
+    id: oSZc1pEbH1cy9P2uKXKX3
+    mainGraphId: leYzer01qH45JoW32zqVW
+    title: Workshop solution
+  plugins: []

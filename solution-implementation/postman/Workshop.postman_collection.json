@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "5f51156b-17ac-40bf-afa5-1d4f3544952f",
+		"name": "Workshop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24918226",
+		"_collection_link": "https://galactic-spaceship-971581.postman.co/workspace/Palo-IT~44b3e09f-69ff-4401-bf0d-64d747b9380b/collection/24918226-5f51156b-17ac-40bf-afa5-1d4f3544952f?action=share&source=collection_link&creator=24918226"
+	},
+	"item": [
+		{
+			"name": "Call JS function and compare",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"input\": \"5 5 1 6\",\n    \"graphName\": \"3. Game of 24/2. Call JS function and compare\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/run-graph",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"run-graph"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JS loop",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"input\": \"5 5 1 6\",\n    \"graphName\": \"3. Game of 24/3. JS loop\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/run-graph",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"run-graph"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify answer with AI",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"input\": \"5 5 1 6\",\n    \"graphName\": \"3. Game of 24/4. Verify answer with AI\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/run-graph",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"run-graph"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

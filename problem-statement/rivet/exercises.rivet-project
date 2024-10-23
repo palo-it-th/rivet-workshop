@@ -116,7 +116,7 @@ data:
               should contain only JSON format.
           outgoingConnections:
             - output->"Graph Input" f5xKs_WOjuRd1LL_QwGe2/default
-          visualData: 240.2932817802664/643.9214187978431/330/737//
+          visualData: 237.86253695805675/647.5675360311576/330/740//
         '[dgHJhTEuTW-WRxGBtWkAE]:graphOutput "Graph Output"':
           data:
             dataType: string
@@ -139,7 +139,7 @@ data:
             endpoint: https://api.groq.com/openai/v1/chat/completions
             headers:
               - key: Authorization
-                value: Bearer <your-api-key>
+                value: Bearer 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
               - key: Content-Type
                 value: application/json
             maxTokens: 3000
@@ -166,7 +166,7 @@ data:
             useUserInput: false
           outgoingConnections:
             - response->"Graph Output" dgHJhTEuTW-WRxGBtWkAE/value
-          visualData: 1381.1902105865495/517.0514011885106/230/692//
+          visualData: 1378.5676500474067/517.0514011885106/230/742//
         '[nmVo3ZFZwhHtabBIxcC4V]:assemblePrompt "Assemble Prompt"':
           outgoingConnections:
             - prompt->"Chat" l1H6KY9CxrgBUxIOK-38Y/prompt
@@ -192,42 +192,23 @@ data:
           visualData: 1802.8401621707656/572.9381012300687/330/737//
         '[7JvRXbGK_aB-l0G6Q7cP-]:assemblePrompt "Assemble Prompt"':
           outgoingConnections:
-            - prompt->"Chat" u01lYonVQ8M3UBuw2RMyv/prompt
+            - prompt->"Chat" W7ElRuWcdMC0JVBGt6Ku8/prompt
           visualData: 994.7899576842797/708.1274255372367/280/738//
-        '[ZjL5I1SCG3CErNd2qU7-C]:comment "Comment"':
-          data:
-            backgroundColor: rgba(0,0,0,0.05)
-            color: rgba(255,255,255,1)
-            height: 825.8345248376804
-            text: "#### Example prompt"
-          visualData: 445.3266699516277/65.59561473898104/371.6968115549687/725//
-        '[aI2ut1_tCnZyFTF9mOETu]:prompt "Prompt"':
+        '[VvZI8xvyappbW5elw1Xoo]:prompt "Prompt"':
           data:
             enableFunctionCall: false
-            promptText: Answer in a consistent style.
-            type: system
+            promptText: |-
+              {
+                  "jobTitle": "Digital Marketing Specialist",
+                  "company": "Naruto Co., Ltd.",
+                  "location": "Konoha Village."
+              }
+            type: assistant
             useTypeInput: false
           outgoingConnections:
-            - output->"Assemble Prompt" 7JvRXbGK_aB-l0G6Q7cP-/message1
-          visualData: 1006.0068935428158/479.0882982463931/280/775//
-        '[l9j6k28_3bATGaW0sOqv0]:prompt "Prompt"':
-          data:
-            enableFunctionCall: false
-            promptText: "{{input}}"
-            type: user
-            useIsCacheBreakpointInput: false
-            useTypeInput: false
-          outgoingConnections:
-            - output->"Assemble Prompt" 7JvRXbGK_aB-l0G6Q7cP-/message4
-          visualData: 537.7534199266956/1020.4160736421439/280/735//
-        '[rjQxZlcpCvY4PbCZycXiG]:text "Text"':
-          data:
-            promptText: ""
-            text: ""
-          outgoingConnections:
-            - output->"Graph Input" 1QihxOm9vAAe8LSRCzzyX/default
-          visualData: 104.37055722612327/932.3501926045533/330/776//
-        '[u01lYonVQ8M3UBuw2RMyv]:chat "Chat"':
+            - output->"Assemble Prompt" 7JvRXbGK_aB-l0G6Q7cP-/message3
+          visualData: 496.42174312595927/724.7277171410257/280/789//
+        '[W7ElRuWcdMC0JVBGt6Ku8]:chat "Chat"':
           data:
             additionalParameters: []
             cache: false
@@ -236,7 +217,7 @@ data:
             endpoint: https://api.groq.com/openai/v1/chat/completions
             headers:
               - key: Authorization
-                value: Bearer <your-api-key>
+                value: Bearer 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
               - key: Content-Type
                 value: application/json
             maxTokens: 3000
@@ -263,7 +244,140 @@ data:
             useUserInput: false
           outgoingConnections:
             - response->"Graph Output" 4zSZEw9OFMR2Kq8e1vOJJ/value
-          visualData: 1425.9953180183952/530.0205969489461/230/763//
+          visualData: 1413.6637706742813/569.4591150184885/230/792//
+        '[ZjL5I1SCG3CErNd2qU7-C]:comment "Comment"':
+          data:
+            backgroundColor: rgba(0,0,0,0.05)
+            color: rgba(255,255,255,1)
+            height: 825.8345248376804
+            text: "#### Example prompt"
+          visualData: 456.7640293469941/69.40806787076984/371.6968115549687/778//
+        '[aI2ut1_tCnZyFTF9mOETu]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: Answer in a consistent style.
+            type: system
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" 7JvRXbGK_aB-l0G6Q7cP-/message1
+          visualData: 1008.4654093549149/538.3051735844633/280/788//
+        '[fTMq2IuiXkbZc6jSsorcf]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: >-
+              Job Title: Digital Marketing Specialist
+
+
+              Job Description:
+
+
+              We are seeking a dynamic and motivated Digital Marketing Specialist to join our growing team. The ideal candidate will have a strong understanding of the digital marketing landscape, including SEO, SEM, social media, email marketing, and content marketing.
+
+
+              Company name is Naruto Co., Ltd. Located in Konoha Village.
+
+
+              Responsibilities:
+
+
+              Develop and implement comprehensive digital marketing strategies to increase brand awareness and drive lead generation.
+
+              Manage SEO and SEM campaigns to improve search engine rankings and drive organic and paid traffic to the company's website.
+
+              Create engaging content for social media platforms, blogs, and email campaigns.
+
+              Analyze website and campaign performance using tools like Google Analytics, and provide reports with actionable insights.
+
+              Collaborate with cross-functional teams to align marketing efforts with business goals.
+
+              Qualifications:
+
+
+              Bachelor's degree in Marketing, Business, or a related field.
+
+              Proven experience in digital marketing.
+
+              Excellent understanding of SEO, SEM, and social media marketing.
+
+              Strong analytical skills and experience with Google Analytics.
+
+              Excellent communication and teamwork skills.
+
+              This is a full-time position with competitive salary and benefits. If you are a creative problem solver with a passion for digital marketing, we would love to hear from you!
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" 7JvRXbGK_aB-l0G6Q7cP-/message2
+          visualData: 491.3447891517914/332.29433335149747/280/780//
+        '[j3NIKffYsA4fKGtC-waph]:comment "Comment"':
+          data:
+            backgroundColor: rgba(0,0,0,0.05)
+            color: rgba(255,255,255,1)
+            height: 600
+            text: |-
+              #### System prompt
+              #### Answer in consistent style
+          visualData: 870.1583603505742/387.78266405209115/630/786//
+        '[l9j6k28_3bATGaW0sOqv0]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: "{{input}}"
+            type: user
+            useIsCacheBreakpointInput: false
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Assemble Prompt" 7JvRXbGK_aB-l0G6Q7cP-/message4
+          visualData: 537.7534199266956/1020.4160736421439/280/735//
+        '[rjQxZlcpCvY4PbCZycXiG]:text "Text"':
+          data:
+            promptText: ""
+            text: >
+              Job Title: Operations Manager
+
+
+              Job Description:
+
+
+              We are looking for an experienced Operations Manager to oversee our company's daily operations and ensure efficiency and effectiveness in all aspects of our business. The ideal candidate will have a strong background in operations management, exceptional leadership skills, and a strategic mindset.
+
+
+              Company name is Namek Co., Ltd. Located in Namekian Village.
+
+
+              Responsibilities:
+
+
+              Oversee day-to-day operations and ensure they align with the company's goals and objectives.
+
+              Develop and implement operational policies, procedures, and systems to improve efficiency and productivity.
+
+              Manage budgets, inventory, and other resources to optimize profitability.
+
+              Lead and motivate a team of employees to achieve operational targets.
+
+              Collaborate with other departments to streamline processes and improve cross-functional communication.
+
+              Analyze operational performance data and generate reports to identify areas for improvement.
+
+              Qualifications:
+
+
+              Bachelor's degree in Business Administration, Operations Management, or a related field.
+
+              Proven experience in operations management.
+
+              Strong leadership and team management skills.
+
+              Excellent analytical and problem-solving skills.
+
+              Proficiency in operations management software and tools.
+
+              Strong communication and interpersonal skills.
+
+              This is a full-time position with a competitive salary and benefits package. If you are a strategic thinker with a passion for driving operational excellence, we encourage you to apply!
+          outgoingConnections:
+            - output->"Graph Input" 1QihxOm9vAAe8LSRCzzyX/default
+          visualData: 73.67663532124794/621.6691510447492/330/793//
     xKNpUOyu7nVyJdhyttJX8:
       metadata:
         description: ""
